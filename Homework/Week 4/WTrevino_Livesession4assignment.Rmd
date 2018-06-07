@@ -32,4 +32,9 @@ major_count <- as.data.frame(table(df$major_category))
 par(las =2)
 par(mar=c(10,4,4,2))
 barplot(major_count$Freq, names.arg = major_count$Var1)
+write.csv(df, row.names = FALSE, file="recent_grads.csv")
 ```
+
+### 3)Github Repo
+
+https://github.com/williamtrevino/SMU-MSDS-6306
