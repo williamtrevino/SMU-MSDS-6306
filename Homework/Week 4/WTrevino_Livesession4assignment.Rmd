@@ -1,0 +1,35 @@
+---
+title: "Homework 4"
+author: "William Trevino"
+date: "June 7, 2018"
+output: html_document
+---
+
+### 1)
+
+```{r, echo=TRUE}
+install.packages("fivethirtyeight",repos = "http://cran.us.r-project.org")
+library(fivethirtyeight)
+df <- college_recent_grads
+```
+
+URL:
+https://github.com/rudeboybert/fivethirtyeight/blob/master/README.md
+
+```{r, echo=TRUE}
+dim(df)
+colnames(df)
+```
+
+
+### 2)
+
+Isn't the first part of A just the same as part of D in problme one???
+```{r, echo=TRUE}
+colnames(df)
+length(colnames(df))
+major_count <- as.data.frame(table(df$major_category))
+par(las =2)
+par(mar=c(10,4,4,2))
+barplot(major_count$Freq, names.arg = major_count$Var1)
+```
