@@ -9,18 +9,35 @@ output: html_document
 
 ```{r, echo=TRUE}
 setwd("/Data Science/SMU/SMU-MSDS-6306/Homework/Week 5/")
-install.packages("fivethirtyeight",repos = "http://cran.us.r-project.org")
-library(fivethirtyeight)
-df <- college_recent_grads
+df <- read.csv(file = "yob2016.txt", sep = ";", header = FALSE)
+colnames(df) <- c("First_name","Gender","Count")
+summary(df)
+str(df)
+y2016 <- df[!grepl("yyy", df$`First_name`),]
 ```
-
-URL:
-https://github.com/rudeboybert/fivethirtyeight/blob/master/README.md
-
-```{r, echo=TRUE}
-dim(df)
-colnames(df)
-```
-
 
 ### 2)
+```{r, echo=TRUE}
+y2015 <- read.csv(file = "yob2015.txt",header = FALSE)
+colnames(y2015) <- c("First_name","Gender","Count")
+tail(y2015)
+final <- merge(y2016, y2015, by=c("First_name")) 
+any(is.na(final))
+```
+
+### 3)
+
+```{r, echo=TRUE}
+final$Total <- apply(final[,c("Count.x","Count.y")], 1, function(z) sum(z))
+final <- final[order(-final$Total),]
+head(final)
+Girls <- final[final$Gender.x == "F",]
+head(Girls)
+top <- head(as.data.frame(Girls[Girls$Gender.x == "F",1]), n = 10)
+colnames(top) <- c('Name')
+write.csv(top, row.names = TRUE, file="girl_names.csv")
+```
+
+### 3)Github Repo
+
+https://github.com/williamtrevino/SMU-MSDS-6306
