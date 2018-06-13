@@ -20,13 +20,24 @@ Data sets were ';' delmited files
 
 ### R Variables
 y2015 - Data Frame: contains frequencies of baby names including gender for 2015
+
 	First_name: Factor
+
 	Gender: Factor
+
 	Count: int
+
 y2016 - Data Frame: contains frequencies of baby names including gender for 2015
+
 	First_name: Factor
+
 	Gender: Factor
+
 	Count: int
+
 final - Data Frame: combined data of 2015 and 2016
+
 Girls - Data Frame: Female names only in descending order.
+
 top - Data Frame: top 10 rows from "Girls" Data Frame
+
