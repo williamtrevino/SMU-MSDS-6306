@@ -1,0 +1,26 @@
+---
+title: "Home Work 5"
+author: "William Trevino"
+date: "June 12, 2018"
+output: html_document
+---
+
+### 1)
+
+```{r, echo=TRUE}
+setwd("/Data Science/SMU/SMU-MSDS-6306/Homework/Week 5/")
+install.packages("fivethirtyeight",repos = "http://cran.us.r-project.org")
+library(fivethirtyeight)
+df <- college_recent_grads
+```
+
+URL:
+https://github.com/rudeboybert/fivethirtyeight/blob/master/README.md
+
+```{r, echo=TRUE}
+dim(df)
+colnames(df)
+```
+
+
+### 2)
