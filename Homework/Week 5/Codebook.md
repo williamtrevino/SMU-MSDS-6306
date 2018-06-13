@@ -8,12 +8,12 @@ Home work assignment 5
 Each week of assignments is self contained in its respective week number under the Homework directory
 
 
-###Collection of the raw data
+### Collection of the raw data
 yob2015.txt -- Name,Gender,Count
 yob2016.txt -- Name,Gender,Count
 both data sets can be found at: https://www.dropbox.com/sh/pdk0yr5uq5z6n71/AAAfrdmDO9nGZyzIpS2cOD0Pa?dl=0
 
-###Cleaning of the data
+### Cleaning of the data
 Data sets were ';' delmited files
 
 ### R Variables
