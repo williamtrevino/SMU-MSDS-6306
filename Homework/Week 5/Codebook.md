@@ -10,7 +10,9 @@ Each week of assignments is self contained in its respective week number under t
 
 ### Collection of the raw data
 yob2015.txt -- Name,Gender,Count
+
 yob2016.txt -- Name,Gender,Count
+
 both data sets can be found at: https://www.dropbox.com/sh/pdk0yr5uq5z6n71/AAAfrdmDO9nGZyzIpS2cOD0Pa?dl=0
 
 ### Cleaning of the data
@@ -28,5 +30,3 @@ y2016 - Data Frame: contains frequencies of baby names including gender for 2015
 final - Data Frame: combined data of 2015 and 2016
 Girls - Data Frame: Female names only in descending order.
 top - Data Frame: top 10 rows from "Girls" Data Frame
-
-
