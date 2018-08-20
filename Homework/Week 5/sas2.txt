@@ -1,0 +1,6 @@
+proc npar1way data = hsb Wilcoxon hl;
+where race = 1 |race = 4;
+class race;
+var write;
+run;
+

@@ -1,0 +1,88 @@
+---
+title: "Homework 11"
+author: "William Trevino"
+date: "August 16, 2018"
+output: html_document
+---
+
+# install.packages("forecast")
+# install.packages('fpp2')
+
+1 A)
+```{r, echo=TRUE}
+library(forecast)
+library(ggplot2)
+library(fpp2)
+dax <- EuStockMarkets[,1]
+head(dax)
+```
+
+1 B)
+```{r, echo=TRUE}
+plot(dax, col = "blue", ylab = "DAX Stock")
+abline(v = 1997, col= "red")
+```
+
+1 C)
+```{r, echo=TRUE}
+dax_trend <- ma(dax, order = 260, centre = T)
+dax_season <- dax / dax_trend
+dax_random <- dax / (dax_trend * dax_season)
+dax <- data.frame(Y=as.matrix(dax), date=time(dax))
+dax_trend <- data.frame(Y=as.matrix(dax_trend), date=time(dax_trend))
+dax_season <- data.frame(Y=as.matrix(dax_season),date=time(dax_season))
+dax_random <- data.frame(Y=as.matrix(dax_random),date=time(dax_random))
+
+colnames(dax)<-c("Stock","Period")
+colnames(dax_trend)<-c("Trend","Period")
+colnames(dax_season)<-c("Season","Period")
+colnames(dax_random)<-c("Random","Period")
+foo <- merge(dax,dax_trend,by="Period")
+foo <- merge(foo, dax_season,by="Period")
+foo <- merge(foo, dax_random,by="Period")
+ggplot(foo, aes(Period)) +
+  geom_line(aes(y= Stock)) +
+  geom_line(aes(y= Trend)) +
+  geom_line(aes(y= Season)) +
+  geom_vline(xintercept=1997)
+```
+
+
+2 A)
+```{r, echo=TRUE}
+autoplot(maxtemp)
+```
+
+2 B)
+```{r, echo=TRUE}
+temps <- maxtemp
+temps <- window(temps, start=1991)
+```
+
+2 C)
+```{r, echo=TRUE}
+temps_ses <- ses (temps, h=5)
+plot(temps_ses)
+lines(fitted(temps_ses),col="blue")
+lines(temps_ses$mean,col="blue")
+```
+
+2 D)
+```{r, echo=TRUE}
+temps_holt <- holt(temps,initial="optimal", damped=TRUE,h=5)
+plot(temps_holt,PI=FALSE)
+lines(fitted(temps_holt),col="blue")
+lines(temps_holt$mean,col="blue")
+```
+
+2 E) Ses has a lower AICc score 
+```{r, echo=TRUE}
+temps_ses$model
+temps_holt$model
+```
+
+
+
+### Github Repo
+
+https://github.com/williamtrevino/SMU-MSDS-6306
